@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAxCAYAAABznEEcAAAACXBIWXMAAAsSAAALEgHS3X78AAAE9klEQVRogdVaT4gbVRj/Xqii6yHrH4QcpOsl0lPTgzdhJ9lCFj2Yg2CgorNCDznt6sGbcd2rRXZ7MFChm1W2DT2lUCRBkk4ulUJhsxeRoJi1talWlkxxS2tNn7zhm3Fm8ibvvWRmQ3+QQ5I3877f9+993zdDKKXwpONIGPLXm0YOAFIA0AeAajajdYPWJmuNWQBg6+cAoA0ARmdxoT/J/mNbot40mBArAKADQNz391I2o5X91yRrDbZ23bfeZMQBoNxZXDDGkUWZBAq/CgAfCJamsxnNESpZa9ia9xN2o8XurUomprK43jRWURARAUALuZETEGCYB4CryVpjHd1OClIk6k1jtt40mPCfSQhiY873XVooAFhmykrWGqlQSNSbBrsRC9TjCkIAXuOGavAeBYAdjKORGEkCCRgK2nfDH9hVDGJVbIqIBJKYgICJ2ckTnJ3FhS7GRehEuNkJM5Aok/jRQu2zcyLQdVznhI6BrII0L3MFkWgrxICVFv2alwGmXUZcSIYOyMWfv/7tH7YXreqeeBs6setNY12SgInCr6sKbwNdTEvWGjkkw7O8ee/O4y//qP7+IQY7I665F3gsgXGwI0lAy2a09rgE/MB0WvYpcK9rHJx/9NP+577lS7SqO4nDH9gyWmUEUmESYOgsLrRRw7vsOxnAd7e/uXONQwCwYnDgWKLeNNgNrkoQCNUCfrA4+XufvtO7dOs9gVs71nBbYkViDz1KAoBx0rt064ZEXDrWsEhgSn1bcNHlbEarhiKpALSqs0y3IVh2lOTKVlliWyIncW8ZS4WJVYmDUXdInL17rbP/7/0NzPk8bI1qdKIArep9Tunih6V8K7BJKW/n2V14auaHj158vZ+NH3sWswXzzRNRxwIPJFdmbv6rYNmrBL56d1RWar303CtX7r7/xZnoReaD5Mqi6iEd49T9bsz/dXDzjUOUmQdROaOJSAAWgtOEcH+Zzm7aJEQJJSUzsplonBICGAle6WGjG8rcKUrcvv79HPb2QWjJuJMoZqaN9pNAQjTx6MdkUliIAo0DKRKiwFXtg8OGSIntGC1U2qJCi5TywtlPFOglTmnYkgYi0ds27JgQudRUSEjsaxWsNglRnzBPSvlDjY1e4lRKYuZrye0mIardx55qjAmZ/f4nQQuVvoQ1jpNS/lCIoBVECeVyordtlSTuc2I1eL2D5aiD3CyS3MzpC8bTb/3yqcA7HIV65k6klC9LPntYooWKqOtShlkknvnv4wcvbzz49qTG6Sdaid62E6P+E3tFcuC7SUr5UHtus0h0HNw5U8DYM38uz5y+0CXPDy76lnu8YWgWi+6yKbk3S3E6LVTG7r/NImED5rJg2rL3cOfN84Mbsx8zN0r0tvnDM8+P8m5lY8sa9CqQMYtkDjXKLCozfTcH/WOfvHD2x3ND8gaQmEXfVH06tIsTijYtVIYOULNINKyFNIk5F+/eWnyNDpVJgU9PJyDiwWtHDrau37yiYlUerPlvfI1yLR1YiuPZ4Qx4p4g9tECgq47sJ1xEgoZqUWMXLTCyzxc2RYwILVQ0QZ8bBTbiazTFiwFlEi4yLK2dOASrMO2n42tU+hxSeqOA9R5olXQEZJjvL6H2lZ7/jTXtwPSpkVI+hXle5pUHHpyXU1QFd2OikQ12hVYJgITsc4AdZCxFe56/4QyJfdh17UkEdwAA/wEUfN+dUNg05QAAAABJRU5ErkJggg==">
+    <title>SVG charts preview</title>
+    <script src="svgcharts.js"></script>
+    <style>
+        :root {
+            --bg-body: #f0f4f9;
+            --bg-panel: #ffffff;
+            --bg-column: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --border-color: #dce3ec;
+            --input-bg: #fafcfd;
+            --input-border: #cbd5e1;
+            --input-focus: #3b82f6;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --btn-bg: #1e293b;
+            --btn-hover: #0f172a;
+            --btn-primary: #2563eb;
+            --btn-primary-hover: #1d4ed8;
+            --radius: 8px;
+            --transition: 0.2s;
+        }
+
+        body.dark-theme {
+            --bg-body: #12161e;
+            --bg-panel: #1f2937;
+            --bg-column: #1f2937;
+            --text-primary: #e7edf4;
+            --text-secondary: #b9c7da;
+            --border-color: #334155;
+            --input-bg: #2d3a4b;
+            --input-border: #4a5a70;
+            --input-focus: #60a5fa;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --btn-bg: #3b4a5e;
+            --btn-hover: #4e5f77;
+            --btn-primary: #3b82f6;
+            --btn-primary-hover: #60a5fa;
+        }
+
+        body {
+            /*font-family: 'Inter', system-ui, -apple-system, sans-serif;*/
+            background: var(--bg-body);
+            color: var(--text-primary);
+            padding: 6px 8px;
+            max-width: 1280px;
+            margin: 0 auto;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .data {
+            background: var(--bg-panel);
+            border-radius: var(--radius);
+            padding: 4px 4px;
+            margin-bottom: 2px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 4px;
+            transition: background var(--transition), border var(--transition);
+        }
+
+        .form-group {
+            flex:1;
+            display: flex;
+            align-items: center;
+            gap: 2px 4px;
+            flex-wrap: nowrap;
+        }
+
+        .form-group label {
+            min-width: 16px;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            color: var(--text-secondary);
+            text-align: end;
+            line-height: 1;
+        }
+
+        .form-group input {
+            flex:1;
+            padding: 4px 4px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            width: 32px;
+            height: 16px;
+            font-size: 11px;
+            font-weight: 500;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            outline: none;
+            transition: border var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-group input[type="number"] {
+            appearance: textfield;
+        }
+        .form-group input::-webkit-outer-spin-button,
+        .form-group input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        button {
+            background: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 2px 10px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 24px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background: var(--btn-hover);
+            transform: scale(0.96);
+        }
+
+        button:active {
+            transform: scale(0.93);
+        }
+
+        .data button:first-of-type {
+            background: var(--btn-primary);
+        }
+        .data button:first-of-type:hover {
+            background: var(--btn-primary-hover);
+        }
+
+        .theme-toggle {
+            background: transparent !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 2px 8px !important;
+            font-size: 16px !important;
+            height: 24px !important;
+            width: 36px;
+            border-radius: var(--radius);
+        }
+        .theme-toggle:hover {
+            background: var(--input-bg) !important;
+            transform: scale(0.95);
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            gap: 2px;
+            margin-top: 2px;
+        }
+
+        .column {
+            flex: 1 1 auto;
+            min-width: 180px;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-column);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: background var(--transition), border var(--transition);
+        }
+
+        .colhead {
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            color: var(--text-secondary);
+            padding: 2px 0 6px;
+            border-bottom: 1px dashed var(--border-color);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        pre {
+            padding: 1px 0px 0px 0px;
+            border-top: 1px dashed var(--border-color);
+            margin: 0%;
+        }
+        code.hljs {
+            white-space: pre;
+            font-family: monospace;
+            overflow-x: auto;
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        code::-webkit-scrollbar { width: 8px; height: 8px; }
+        code::-webkit-scrollbar-track { background: #00000000; }
+        code::-webkit-scrollbar-thumb { background: #808080; border-radius: 4px; }
+        code::-webkit-scrollbar-thumb:hover { background: #3d3d3d; }
+
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .diagram-labels-scrollable::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
+            .diagram-labels-scrollable::-webkit-scrollbar-thumb { background: #808080; border-radius: 2px !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Панель управления -->
+    <div class="data">
+        
+        <button class="theme-toggle" id="themeToggle" title="Переключить тему">🌓</button>
+        <div class="form-group"><label for="iro">ro</label><input type="number" id="iro" value="100" min="0"></div>
+        <div class="form-group"><label for="iri">ri</label><input type="number" id="iri" value="50" min="0"></div>
+        <div class="form-group"><label for="ibos">bos</label><input type="number" id="ibos" value="4" min="0"></div>
+        <div class="form-group"><label for="iboe">boe</label><input type="number" id="iboe" value="4" min="0"></div>
+        <div class="form-group"><label for="ibis">bis</label><input type="number" id="ibis" value="4" min="0"></div>
+        <div class="form-group"><label for="ibie">bie</label><input type="number" id="ibie" value="4" min="0"></div>
+        <div class="form-group"><label for="isa">sa</label><input type="number" id="isa" value="0"></div>
+        <div class="form-group"><label for="ipa">pa</label><input type="number" id="ipa" value="0"></div>
+        <div class="form-group"><label for="idur">dur</label><input type="number" id="idur" value="500"></div>
+
+        <button onclick="rebuildContainer()">⟳</button>
+        <button id="save">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2 5 5h-5V4zM8.531 18h-.76v-1.411H6.515V18h-.767v-3.373h.767v1.296h1.257v-1.296h.76V18zm3-2.732h-.921V18h-.766v-2.732h-.905v-.641h2.592v.641zM14.818 18l-.05-1.291c-.017-.405-.03-.896-.03-1.387h-.016c-.104.431-.245.911-.375 1.307l-.41 1.316h-.597l-.359-1.307a15.154 15.154 0 0 1-.306-1.316h-.011c-.021.456-.034.976-.059 1.396L12.545 18h-.705l.216-3.373h1.015l.331 1.126c.104.391.21.811.284 1.206h.017c.095-.391.209-.836.32-1.211l.359-1.121h.996L15.563 18h-.745zm3.434 0h-2.108v-3.373h.767v2.732h1.342V18z"/>
+            </svg>
+        </button>
+        <button id="save-inline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2 5 5h-5V4zM8.531 18h-.76v-1.411H6.515V18h-.767v-3.373h.767v1.296h1.257v-1.296h.76V18zm3-2.732h-.921V18h-.766v-2.732h-.905v-.641h2.592v.641zM14.818 18l-.05-1.291c-.017-.405-.03-.896-.03-1.387h-.016c-.104.431-.245.911-.375 1.307l-.41 1.316h-.597l-.359-1.307a15.154 15.154 0 0 1-.306-1.316h-.011c-.021.456-.034.976-.059 1.396L12.545 18h-.705l.216-3.373h1.015l.331 1.126c.104.391.21.811.284 1.206h.017c.095-.391.209-.836.32-1.211l.359-1.121h.996L15.563 18h-.745zm3.434 0h-2.108v-3.373h.767v2.732h1.342V18z"/>
+            </svg>
+        </button>
+        <button onclick="window.print()" class="no-print">🖨️</button>
+    </div>
+
+    <!-- Контейнер диаграмм -->
+    <div class="row">
+        <div class="column">
+            <div class="colhead">unsynchronized</div>
+            <doughnut-chart id="chart1"></doughnut-chart>
+            <pre><code class="language-javascript" id="code1"></code></pre>
+        </div>
+        <div class="column">
+            <div class="colhead">synchronized</div>
+            <doughnut-chart id="chart2"></doughnut-chart>
+            <pre><code class="language-javascript" id="code2"></code></pre>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script id="code">
+        var i=-1; customElements.define('doughnut-chart', Doughnut);
+        function element(ns,type,attrs,inner){
+            const n=({'svg':'http://www.w3.org/2000/svg','html':'http://www.w3.org/1999/xhtml','mathml':'http://www.w3.org/1998/Math/MathML'});
+            const e=document.createElementNS(n[ns] || n['html'],type);
+            if(attrs){Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));}
+            if(inner){if(typeof inner === 'string'){e.innerHTML=inner;}else if(Array.isArray(inner)){inner.forEach((el)=>e.appendChild(el));}else{e.append(inner);}}
+            return e;
+        }
+
+        function gencolor(){
+            return [Math.floor(Math.random()*255),Math.floor(Math.random()*255),Math.floor(Math.random()*255),0.9];
+        }
+
+        function array2color(arr,alpha=true,prefix='#',padsl=2,padsc='0',delim='',suffix=''){ 
+            return prefix+arr.map((e,i)=>Math.floor(i<3 ? e : e*255).toString(16).padStart(padsl,padsc)).filter((_,i)=>alpha || i<3).join(delim)+suffix;
+        }
+
+        function callback(e){
+            console.log(e); alert(`g:${e.g} v:${e.v} l:${typeof e.l === 'string' ? e.l : e.l.textContent} c:${e.c}`);
+        }
+
+        function save(inline=false){
+            function getInlineStyles(element, styles='', properties=['style', 'color', 'font', 'background', 'margin', 'padding', 'border', 'width', 'height', 'display', 'position', 'd' ,'fill']) {
+                const def=['auto','none','normal'],computed = window.getComputedStyle(element);
+                Array.from(computed).forEach((e)=>{
+                    if(computed[e] && !def.includes(computed[e])){styles+=`${e}:${computed[e]}; `;}
+                });
+                return styles;
+            }
+            var html=document.documentElement;
+            if(inline){
+                html=html.cloneNode(true);
+                const orig=Array.from(document.documentElement.querySelectorAll('*'));
+                Array.from(html.querySelectorAll('*')).forEach((e,i)=>e.setAttribute('style',getInlineStyles(orig[i])));
+                Array.from(html.querySelectorAll('style')).forEach((e)=>e.parentElement.removeChild(e));
+            }
+            
+            if('showSaveFilePicker' in window){
+                const blob = new Blob([html.outerHTML], { type: 'text/html;charset=utf-8' });
+                const handle = window.showSaveFilePicker({
+                    suggestedName: 'svg.html',
+                    types: [{
+                        description: 'HTML',
+                        accept: { 'text/html': ['.html'] }
+                    }]
+                }).then((h)=>h.createWritable()).then((w)=>{w.write(blob); w.close();}).catch((e)=>console.log(e));
+            }else{
+                navigator.clipboard.writeText(html.outerHTML).then(() => alert('HTML copied to clipboard!')).catch(e => console.error('Error:', e));
+            }
+        }
+        
+        function rebuildContainer() {
+            if(typeof Doughnut === 'function'){
+                // get parameters start    
+                i++; 
+                const ro=parseFloat(document.getElementById('iro').value) || 0;
+                const ri=parseFloat(document.getElementById('iri').value) || 0;
+                const bos=parseFloat(document.getElementById('ibos').value) || 0;
+                const boe=parseFloat(document.getElementById('iboe').value) || 0;
+                const bis=parseFloat(document.getElementById('ibis').value) || 0;
+                const bie=parseFloat(document.getElementById('ibie').value) || 0;
+                const sa=(parseFloat(document.getElementById('isa').value) || 0)*Math.PI/180;
+                const pa=(parseFloat(document.getElementById('ipa').value) || 0)*Math.PI/180;
+                const duration=parseFloat(document.getElementById('idur').value) || 0;
+                // get parameters end
+                // code of doughnut1 start
+                const doughnut1 = document.getElementById('chart1');
+                //clear if js enabled in saved html
+                if(i===0){doughnut1.innerHTML='';}
+                doughnut1.duration=duration;
+
+                const data1=Array.from({ length: Math.floor(Math.random() * 20) }, () => ({
+                    v:Math.floor(Math.random() * 2000000), c:gencolor()
+                })).map((e)=>({
+                    v:e.v, l:element(null,'a',{"href":'https://get-color.ru/'+array2color(e.c,false)},array2color(e.c)), c:e.c, g:'data1',
+                    p:{ ro:ro, ri:ro-(ro-ri)/2, os:bos, oe:boe, is:bis, ie:bie, sa:sa, pa:pa, cw:true }
+                })).sort((a,b)=>b.v-a.v);
+
+                const data2=Array.from({ length: Math.floor(Math.random() * 10) }, () => ({
+                    v:Math.floor(Math.random() * 2000000), c:gencolor()
+                })).map((e,i)=>({
+                    v:e.v, l:element(null,'a',{"href":'https://get-color.ru/'+array2color(e.c,false)},array2color(e.c)), c:e.c, g:'data2',
+                    p:{ ro:ri+(ro-ri)/2, ri:ri, os:bos, oe:boe, is:bis, ie:bie, sa:sa, pa:pa, cw:false }
+                })).sort((a,b)=>b.v-a.v);
+
+                doughnut1.formatnumbers=true;
+                doughnut1.data=i%4==0 ? [data1] : [data1,data2];
+                doughnut1.addListener(callback);
+                // code of doughnut1 end
+                // code of doughnut2 start
+                const doughnut2 = document.getElementById('chart2');
+                //clear if js enabled in saved html
+                if(i===0){doughnut2.innerHTML='';}
+                doughnut2.duration=duration;
+                const data=[
+                    {priority:3,type:'a',count:12},
+                    {priority:3,type:'b',count:3},
+                    {priority:1,type:'b',count:34},
+                    {priority:2,type:'c',count:27},
+                    {priority:2,type:'a',count:9},
+                    {priority:3,type:'a',count:2},
+                    {priority:3,type:'c',count:8},
+                    {priority:3,type:'d',count:13},
+                    {priority:1,type:'a',count:21},
+                    {priority:2,type:'t',count:43},
+                    {priority:2,type:'b',count:20},
+                ];
+
+                const colorsmap=({1:[255,0,0,0.9],2:[255,255,0,0.9],3:[0,255,0,0.9],'a':[191,71,69,0.9],'b':[66,215,136,0.9],'c':[176,190,108,0.9],'d':[79,31,142,0.9],'t':[81,156,23,0.9],});
+
+                const mapper=(data,filters)=>{
+                    const filtered=data.map((e,i)=>({
+                        ...e, original:e.count, count: filters.some((f)=>(f.g==='priority' && f.l===e.priority) || (f.g==='type' && f.l===(e.priority+':'+e.type))) ? 0:e.count
+                    }));
+                    const g1=Object.entries(Object.groupBy(filtered,(e)=>e.priority+":"+e.type)).sort().map(([k,v],i)=>({
+                        v:v.reduce((s,e)=>s+e.count,0), lv:v.reduce((s,e)=>s+e.original,0),
+                        l:k, c: colorsmap[v.reduce((_,e)=>e.type,v[0].type)] ?? [127,127,127,0.9],g:'type',group:v.reduce((_,e)=>e.priority,v[0]?.priority)
+                    }));
+                    const g2=Object.entries(Object.groupBy(filtered,(e)=>e.priority)).sort().map(([k,v],i)=>({
+                        v:v.reduce((s,e)=>s+e.count,0), lv:v.reduce((s,e)=>s+e.original,0),
+                        l:k, c: colorsmap[k]  ?? [127,127,127,0.9], g:'priority'
+                    }));
+                    return [
+                        g1.map((e,i,a)=>({...e,p:{
+                            os:g1.some((e,j,a)=>j<i && e.group===a[i].group && e.v>0) ? 0 : bos,
+                            oe:g1.some((e,j,a)=>j>i && e.group===a[i].group && e.v>0) ? 0 : boe,
+                            ro:ro,ri:ro-(ro-ri)/2,is:0,ie:0,sa:sa,pa:pa,cw:true
+                        }})),
+                        g2.map((e,i,a)=>({...e,p:{ro:ri+(ro-ri)/2,ri:ri,os:0,oe:0,is:bis,ie:bie,sa:sa,pa:pa,cw:true}}))
+                    ];
+                };
+                doughnut2.layout('row','column');
+                doughnut2.mapper=mapper;
+                doughnut2.addListener(callback);
+                doughnut2.data=data;
+                // code of doughnut2 end
+            }
+        }
+
+        window.onload = function() {
+            rebuildContainer();
+        };
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        const common=`//define element\ncustomElements.define('doughnut-chart', Doughnut);\n\nfunction callback(e){\n    console.log(e); alert(\`g:\${e.g} v:\${e.v} l:\${typeof e.l === 'string' ? e.l : e.l.textContent} c:\${e.c}\`);\n}\n\n`;
+        const code=document.getElementById('code').innerText;
+
+        const code1=code.match(new RegExp("// code of doughnut1 start\\s*\\n([\\s\\S]*?)\\n\\s*// code of doughnut1 end"))?.at(1);
+        if(code1){
+            document.getElementById('code1').textContent=common+code1.replace(new RegExp('^'+code1.match(/^\s+/)[0],'gm'),'');
+        }
+        const code2=code.match(new RegExp("// code of doughnut2 start\\s*\\n([\\s\\S]*?)\\n\\s*// code of doughnut2 end"))?.at(1);
+        if(code2){
+            document.getElementById('code2').textContent=common+code2.replace(new RegExp('^'+code2.match(/^\s+/)[0],'gm'),'');
+        }
+
+        document.getElementById('save').addEventListener('click',(e)=>save());
+
+        document.getElementById('save-inline').addEventListener('click',(e)=>save(true));
+        
+        if(!document.querySelector('.hljs')){
+            hljs?.highlightAll();
+        }
+    </script>
+    
+</body>
+</html>
