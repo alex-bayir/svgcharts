@@ -330,12 +330,8 @@
         }
 
         function save(inline=false){
-            function getInlineStyles(element, styles='', properties=['style', 'color', 'font', 'background', 'margin', 'padding', 'border', 'width', 'height', 'display', 'position', 'd' ,'fill']) {
-                const def=['auto','none','normal'],computed = window.getComputedStyle(element);
-                Array.from(computed).forEach((e)=>{
-                    if(computed[e] && !def.includes(computed[e])){styles+=`${e}:${computed[e]}; `;}
-                });
-                return styles;
+            function getInlineStyles(element,epv=['auto','none','normal'],computed=window.getComputedStyle(element)) {
+                return Array.from(computed).filter((e)=>computed[e] && !epv.includes(computed[e])).map((e)=>`${e}:${computed[e]};`).join(' ');
             }
             var html=document.documentElement;
             if(inline){

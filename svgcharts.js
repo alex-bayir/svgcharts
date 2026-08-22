@@ -246,10 +246,8 @@ class Doughnut extends HTMLElement {
             if(inner){if(typeof inner === 'string'){e.innerHTML=inner;}else if(Array.isArray(inner)){inner.forEach((el)=>e.appendChild(el));}else{e.append(inner);}}
             return e;
         }
-
-        if(!this.querySelector('style')){
-            this.appendChild(element(null,'style',null,Doughnut.styles));
-            this.setAttribute("class","diagram");
+        if(!document.head.querySelector('#svgcharts')){
+            document.head.appendChild(element(null,'style',{"id":"svgcharts"},Doughnut.styles));
         }
 
         if(this.svg===undefined){
