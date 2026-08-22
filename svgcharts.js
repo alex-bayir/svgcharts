@@ -249,6 +249,8 @@ class Doughnut extends HTMLElement {
         if(!document.head.querySelector('#svgcharts')){
             document.head.appendChild(element(null,'style',{"id":"svgcharts"},Doughnut.styles));
         }
+        
+        this.setAttribute("class","diagram");
 
         if(this.svg===undefined){
             this.svg = element('svg','svg',{"class":"diagram-svg","width":"100%","height":"100%","viewBox":"-110 -110 220 220","role":"img"});
