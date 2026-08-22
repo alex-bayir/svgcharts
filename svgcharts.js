@@ -63,6 +63,7 @@ class Doughnut extends HTMLElement {
             align-items: center;
             justify-content: center;
             text-align: center;
+            pointer-events: none;
         }
         .diagram-center-text {
             flex: 1;
